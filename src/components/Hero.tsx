@@ -33,7 +33,7 @@ export const Hero = () => {
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
               Experience the authentic taste of premium beef sausages crafted with passion and tradition. 
-              100% healthy, delicious, and affordable.
+              100% healthy, delicious, Halal and affordable.
             </p>
 
             {/* CTA Buttons */}
@@ -44,7 +44,7 @@ export const Hero = () => {
                   className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 >
                   <Phone className="mr-2 h-5 w-5" />
-                  Order Now: 425-773-9104
+                  Order Now: +14256831611
                 </Button>
               </a>
               <Button 
