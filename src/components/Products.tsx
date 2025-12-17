@@ -29,7 +29,7 @@ export const Products = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            Our Premium <span className="text-primary">Products</span>
+            Our Premium <span className="text-primary">Packages</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Every sausage is crafted with care, using only the finest ingredients
@@ -59,13 +59,13 @@ export const Products = () => {
         </div>
 
         <div className="text-center">
-          <a href="tel:4257739104">
+          <a href="tel:+14256831611">
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
             >
               <Phone className="mr-2 h-5 w-5" />
-              Call to Order: 425-773-9104
+              Call to Order: +14256831611
             </Button>
           </a>
         </div>
