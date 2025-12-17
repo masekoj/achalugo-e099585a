@@ -78,12 +78,12 @@ export const Footer = () => {
             <ul className="space-y-2 text-background/80">
               <li>
                 <a href="tel:4257739104" className="hover:text-background transition-colors">
-                  425-773-9104
+                  +14256831611
                 </a>
               </li>
               <li>
                 <a href="mailto:info@achalugos.com" className="hover:text-background transition-colors">
-                  info@achalugos.com
+                  achalugosausges@gmail.com
                 </a>
               </li>
               <li>Lynwood, Shoreline, Everett</li>
@@ -95,7 +95,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-background/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/60">
-            <p>&copy; 2024 Achalugo's Chakalaka Beef Sausages. All rights reserved.</p>
+            <p>&copy; 2025 Achalugo's Chakalaka Beef Sausages. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-background transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-background transition-colors">Terms of Service</a>
