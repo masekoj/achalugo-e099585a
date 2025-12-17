@@ -21,8 +21,8 @@ export const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      content: "425-773-9104",
-      link: "tel:4257739104",
+      content: "+14256831611",
+      link: "tel:+14256831611",
     },
     {
       icon: MapPin,
@@ -37,8 +37,8 @@ export const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      content: "info@achalugos.com",
-      link: "mailto:info@achalugos.com",
+      content: "achalugosausages@gmail.com",
+      link: "mailto:achalugosausages@gmail.com",
     },
   ];
 
@@ -101,7 +101,7 @@ export const Contact = () => {
                   <Input 
                     id="name"
                     type="text" 
-                    placeholder="John Doe" 
+                    placeholder="enter your name.." 
                     required
                     className="w-full"
                   />
@@ -114,7 +114,7 @@ export const Contact = () => {
                   <Input 
                     id="phone"
                     type="tel" 
-                    placeholder="(555) 123-4567" 
+                    placeholder="Phone number" 
                     required
                     className="w-full"
                   />
@@ -127,7 +127,7 @@ export const Contact = () => {
                   <Input 
                     id="email"
                     type="email" 
-                    placeholder="john@example.com" 
+                    placeholder="..@gmail.com" 
                     required
                     className="w-full"
                   />
