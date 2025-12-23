@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import product1 from "@/assets/product-1.jpeg";
-import product2 from "@/assets/product-2.jpg";
+import product2 from "@/assets/product-2.jpeg";
 import product3 from "@/assets/product-3.jpg";
 
 export const Products = () => {
@@ -14,7 +14,7 @@ export const Products = () => {
     },
     {
       image: product2,
-      title: "Grilled Ready Sausages",
+      title: "Grill Ready Sausages",
       description: "Pre-seasoned and ready to cook. Ideal for quick meals and gatherings.",
     },
     {
