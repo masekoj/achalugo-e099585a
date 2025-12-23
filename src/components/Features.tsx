@@ -41,16 +41,18 @@ export const Features = () => {
             return (
               <Card
   key={feature.title}
-  bgImage={feature.bgImage}                                      // ← NEW: pass the background image
+  bgImage={feature.bgImage}
   className="text-white border-2 hover:border-primary transition-all duration-300 hover:shadow-lg animate-scale-in"
   style={{ animationDelay: ${index * 0.1}s }}
 >
   <CardContent className="relative z-10 p-8 text-center">
     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-6">
-      <Icon className="h-8 w-8 text-white" />                    {/* white icon */}
+      <Icon className="h-8 w-8 text-white" />
     </div>
     <h3 className="text-2xl font-display font-bold mb-4">{feature.title}</h3>
     <p className="opacity-90 leading-relaxed">{feature.description}</p>
+  </CardContent>
+</Card>
   </CardContent>
 </Card>
             );
