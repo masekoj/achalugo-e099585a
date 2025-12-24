@@ -2,12 +2,11 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-// ── NEW: Card with background image + dark overlay support ──
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     bgImage?: string;
-    overlay?: string; // default: bg-black/60
+    overlay?: string;
   }
 >(({ className, bgImage, overlay = "bg-black/60", ...props }, ref) => (
   <div
