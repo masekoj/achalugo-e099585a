@@ -7,19 +7,19 @@ export const Features = () => {
     icon: Heart,
     title: "100% Healthy",
     description: "Made with premium quality beef and natural ingredients. No artificial preservatives or fillers.",
-    bgImage: "/assets/beef-healthy.jpeg",          // ← ADD THIS (your actual image path)
+    bgImage: "/assets/beef-healthy.jpeg",
   },
   {
     icon: Sparkles,
     title: "Delicious",
     description: "Traditional Chakalaka spices blend perfectly with high-quality beef for an unforgettable taste.",
-    bgImage: "/assets/chakalaka-spices.jpeg",      // ← ADD THIS
+    bgImage: "/assets/chakalaka-spices.jpeg",
   },
   {
     icon: DollarSign,
     title: "Affordable",
     description: "Premium quality at competitive prices. Great value for families and food lovers.",
-    bgImage: "/assets/premium-affordable.jpeg",    // ← ADD THIS
+    bgImage: "/assets/premium-affordable.jpeg",
   },
 ];
 
