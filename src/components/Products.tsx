@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import product1 from "@/assets/product-1.jpeg";
 import product2 from "@/assets/product-2.jpeg";
-import product3 from "@/assets/product-3.jpeg";
+import product3 from "@/assets/product-3.jpg";
 
 export const Products = () => {
   const products = [
