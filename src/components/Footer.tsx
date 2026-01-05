@@ -1,4 +1,5 @@
 import { MapPin } from "lucide-react";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 export const Footer = () => {
   const scrollToSection = (id: string) => {
@@ -10,7 +11,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Our Story */}
-          <div>
+          <AnimatedSection animation="fadeUp" duration={0.8}>
             <h3 className="text-2xl font-display font-bold mb-4 text-white">Our Story</h3>
             <p className="text-white/70 mb-6 leading-relaxed">
               At Achalugo's, we believe great food tells a story. Our Premium Chakalaka Beef Sausages are 
@@ -21,10 +22,10 @@ export const Footer = () => {
             <p className="text-white/60 text-sm italic">
               "From our family kitchen to yours."
             </p>
-          </div>
+          </AnimatedSection>
 
           {/* Quick Links */}
-          <div>
+          <AnimatedSection animation="fadeUp" delay={0.1} duration={0.8}>
             <h4 className="font-display font-bold text-xl mb-6 text-white">Quick Links</h4>
             <ul className="space-y-3">
               {[
@@ -45,10 +46,10 @@ export const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </AnimatedSection>
 
           {/* Connect With Us */}
-          <div>
+          <AnimatedSection animation="fadeUp" delay={0.2} duration={0.8}>
             <h4 className="font-display font-bold text-xl mb-6 text-white">Connect With Us</h4>
             <ul className="space-y-4 text-white/70">
               <li>
@@ -114,26 +115,28 @@ export const Footer = () => {
                 </svg>
               </a>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2 text-white/60">
-              <span className="text-primary">✦</span>
-              <span className="font-display font-medium">Hand-crafted in Washington</span>
-              <span className="text-primary">✦</span>
-            </div>
-            <p className="text-sm text-white/50">
-              &copy; {new Date().getFullYear()} Achalugo's Chakalaka Beef Sausages. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-sm text-white/50">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+        <AnimatedSection animation="fadeIn" delay={0.3} duration={0.8}>
+          <div className="pt-8 border-t border-white/10">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="flex items-center gap-2 text-white/60">
+                <span className="text-primary">✦</span>
+                <span className="font-display font-medium">Hand-crafted in Washington</span>
+                <span className="text-primary">✦</span>
+              </div>
+              <p className="text-sm text-white/50">
+                &copy; {new Date().getFullYear()} Achalugo's Chakalaka Beef Sausages. All rights reserved.
+              </p>
+              <div className="flex gap-6 text-sm text-white/50">
+                <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+              </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </footer>
   );
