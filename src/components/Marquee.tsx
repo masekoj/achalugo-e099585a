@@ -9,7 +9,11 @@ const testimonials = [
   "Our customers love our healthy, halal, and affordable options – join the family!",
 ];
 
-export const Marquee = () => {
+interface MarqueeProps {
+  compact?: boolean;
+}
+
+export const Marquee = ({ compact = false }: MarqueeProps) => {
   const [direction, setDirection] = useState<"left" | "right">("left");
 
   useEffect(() => {
@@ -22,7 +26,14 @@ export const Marquee = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <div className="w-full bg-secondary/50 py-3 overflow-hidden border-y border-border/30">
+    <div 
+      className={`w-full overflow-hidden ${
+        compact 
+          ? "bg-secondary/30 py-2" 
+          : "bg-secondary/50 py-3 border-y border-border/30"
+      }`}
+      style={{ margin: compact ? "0" : "12px 0" }}
+    >
       <motion.div
         className="flex gap-12 whitespace-nowrap"
         animate={{
@@ -38,10 +49,9 @@ export const Marquee = () => {
         {duplicatedTestimonials.map((text, index) => (
           <span
             key={index}
-            className="text-base font-sans px-4"
+            className={`font-sans px-4 ${compact ? "text-sm" : "text-base"}`}
             style={{ 
               color: "#666666",
-              fontSize: "16px",
             }}
           >
             ⭐ {text}

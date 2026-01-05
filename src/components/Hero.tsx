@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone, MapPin } from "lucide-react";
 import { ImageSlideshow } from "@/components/ImageSlideshow";
-import { Marquee } from "@/components/Marquee";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import slideshow1 from "@/assets/slideshow-1.jpg";
 import slideshow2 from "@/assets/slideshow-2.jpg";
@@ -22,15 +21,17 @@ const heroSlideImages = [
 export const Hero = () => {
   return (
     <section id="home" className="pt-20 min-h-screen flex flex-col relative overflow-hidden">
-      {/* Background Slideshow */}
+      {/* Background Slideshow with Premium Overlay */}
       <div className="absolute inset-0 z-0">
         <ImageSlideshow
           images={heroSlideImages}
           interval={6000}
           className="w-full h-full"
-          overlayOpacity={0.4}
+          overlayOpacity={0.3}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/60"></div>
+        {/* Premium dark wash overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-transparent"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10 flex-1 flex items-center">
@@ -43,15 +44,25 @@ export const Hero = () => {
           </AnimatedSection>
           
           <AnimatedSection animation="fadeUp" delay={0.1} duration={0.8}>
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight">
+            <h1 
+              className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight text-foreground"
+              style={{
+                textShadow: "2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3)",
+              }}
+            >
               Achalugo's <br />
-              <span className="text-primary">Chakalaka</span> <br />
+              <span className="text-primary drop-shadow-lg">Chakalaka</span> <br />
               Beef Sausages
             </h1>
           </AnimatedSection>
           
           <AnimatedSection animation="fadeUp" delay={0.2} duration={0.8}>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+            <p 
+              className="text-xl md:text-2xl text-foreground/90 mb-8 leading-relaxed"
+              style={{
+                textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+              }}
+            >
               Experience the authentic taste of premium beef sausages crafted with passion and tradition. 
               100% healthy, delicious, Halal and affordable.
             </p>
@@ -92,13 +103,8 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Testimonials Marquee */}
-      <div className="relative z-10 mt-auto">
-        <Marquee />
-      </div>
-
       {/* Decorative Elements */}
-      <div className="absolute bottom-16 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-[5]"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-[5]"></div>
     </section>
   );
 };
