@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Marquee } from "@/components/Marquee";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,6 +23,11 @@ export const Header = () => {
             <h1 className="text-2xl md:text-3xl font-display font-bold text-primary">
               Achalugo's
             </h1>
+          </div>
+
+          {/* Marquee - Desktop Only */}
+          <div className="hidden md:flex flex-1 mx-8 max-w-2xl">
+            <Marquee compact />
           </div>
 
           {/* Desktop Navigation */}
@@ -109,6 +115,10 @@ export const Header = () => {
             </div>
           </nav>
         )}
+      </div>
+      {/* Marquee - Mobile Full Width */}
+      <div className="md:hidden w-full border-t border-border/50">
+        <Marquee compact />
       </div>
     </header>
   );

@@ -61,8 +61,8 @@ const FeatureCard = ({ icon: Icon, title, description, images, delay }: FeatureC
           ))}
         </div>
 
-        {/* Glassmorphism Overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/50 to-black/30 backdrop-blur-[2px] transition-all duration-500 group-hover:from-black/70 group-hover:via-black/40" />
+        {/* Glassmorphism Overlay - Lighter for better image visibility */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-black/35 to-black/15 backdrop-blur-[1px] transition-all duration-500 group-hover:from-black/60 group-hover:via-black/25" />
 
         {/* Content */}
         <div className="relative z-20 h-full flex flex-col items-center justify-center p-8 text-center">
