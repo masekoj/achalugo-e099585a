@@ -1,16 +1,28 @@
-import { Heart, Sparkles, DollarSign } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Heart, Utensils, DollarSign, LucideIcon } from "lucide-react";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { ImageSlideshow } from "@/components/ImageSlideshow";
 
-// Import feature images
 import featureHealthy1 from "@/assets/feature-healthy-1.jpg";
 import featureHealthy2 from "@/assets/feature-healthy-2.jpg";
 import featureDelicious1 from "@/assets/feature-delicious-1.jpg";
 import featureDelicious2 from "@/assets/feature-delicious-2.jpg";
 import featureAffordable1 from "@/assets/feature-affordable-1.jpg";
 import featureAffordable2 from "@/assets/feature-affordable-2.jpg";
+import slideshow1 from "@/assets/slideshow-1.jpg";
+import slideshow3 from "@/assets/slideshow-3.jpg";
+import slideshow5 from "@/assets/slideshow-5.jpg";
+import slideshow6 from "@/assets/slideshow-6.jpg";
+
+const featuresSlideshowImages = [
+  { src: slideshow1, alt: "Premium grilled beef sausages" },
+  { src: slideshow6, alt: "Quality sausage products" },
+  { src: slideshow3, alt: "Happy customers enjoying sausages" },
+  { src: slideshow5, alt: "Sizzling sausages on the grill" },
+];
 
 interface FeatureCardProps {
-  icon: React.ElementType;
+  icon: LucideIcon;
   title: string;
   description: string;
   images: string[];
@@ -23,99 +35,132 @@ const FeatureCard = ({ icon: Icon, title, description, images, delay }: FeatureC
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 4000); // Change image every 4 seconds
-
+    }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
-    <div
-      className="relative overflow-hidden rounded-2xl group cursor-pointer animate-scale-in"
-      style={{ animationDelay: `${delay}s` }}
-    >
-      {/* Background Image Carousel */}
-      <div className="absolute inset-0 w-full h-full">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-              index === currentImageIndex ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <img
-              src={image}
-              alt=""
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Dark Gradient Overlay with Glassmorphism */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40 backdrop-blur-[2px] group-hover:from-black/85 group-hover:via-black/55 transition-all duration-500" />
-
-      {/* Content */}
-      <div className="relative z-10 p-8 md:p-10 text-center min-h-[320px] flex flex-col items-center justify-center">
-        {/* Icon Container */}
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-white/5">
-          <Icon className="h-10 w-10 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
+    <AnimatedSection animation="fadeUp" delay={delay} duration={0.8}>
+      <div className="group relative h-80 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+        {/* Background Image Carousel */}
+        <div className="absolute inset-0 z-0">
+          {images.map((image, index) => (
+            <div
+              key={image}
+              className="absolute inset-0 transition-opacity duration-1000"
+              style={{
+                opacity: index === currentImageIndex ? 1 : 0,
+              }}
+            >
+              <img
+                src={image}
+                alt={title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+          ))}
         </div>
 
-        {/* Title with Glow Effect */}
-        <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] [text-shadow:_0_2px_10px_rgba(255,255,255,0.2)]">
-          {title}
-        </h3>
+        {/* Glassmorphism Overlay */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/50 to-black/30 backdrop-blur-[2px] transition-all duration-500 group-hover:from-black/70 group-hover:via-black/40" />
 
-        {/* Description */}
-        <p className="text-white/90 leading-relaxed max-w-xs mx-auto text-base [text-shadow:_0_1px_3px_rgba(0,0,0,0.5)]">
-          {description}
-        </p>
+        {/* Content */}
+        <div className="relative z-20 h-full flex flex-col items-center justify-center p-8 text-center">
+          {/* Icon */}
+          <div className="mb-6 p-4 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30 transition-transform duration-500 group-hover:scale-110">
+            <Icon className="w-12 h-12 text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
+          </div>
 
-        {/* Decorative Bottom Shine */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {/* Title with glow effect */}
+          <h3 
+            className="text-2xl md:text-3xl font-display font-bold mb-3 text-white"
+            style={{
+              textShadow: "0 0 20px rgba(255,255,255,0.5), 0 2px 10px rgba(0,0,0,0.8)",
+            }}
+          >
+            {title}
+          </h3>
+
+          {/* Description */}
+          <p 
+            className="text-white/90 leading-relaxed text-base"
+            style={{
+              textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+            }}
+          >
+            {description}
+          </p>
+        </div>
       </div>
-
-      {/* Corner Shine Effect */}
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-    </div>
+    </AnimatedSection>
   );
 };
 
+const features = [
+  {
+    icon: Heart,
+    title: "100% Healthy",
+    description: "Made with premium ingredients, no preservatives, and certified Halal.",
+    images: [featureHealthy1, featureHealthy2],
+  },
+  {
+    icon: Utensils,
+    title: "Delicious Food",
+    description: "Authentic Chakalaka flavor that brings families together.",
+    images: [featureDelicious1, featureDelicious2],
+  },
+  {
+    icon: DollarSign,
+    title: "Affordable",
+    description: "Premium quality at prices everyone can enjoy.",
+    images: [featureAffordable1, featureAffordable2],
+  },
+];
+
 export const Features = () => {
-  const features = [
-    {
-      icon: Heart,
-      title: "100% Healthy",
-      description: "Made with premium quality beef and natural ingredients. No artificial preservatives or fillers.",
-      images: [featureHealthy1, featureHealthy2],
-    },
-    {
-      icon: Sparkles,
-      title: "Delicious Food",
-      description: "Traditional Chakalaka spices blend perfectly with high-quality beef for an unforgettable taste.",
-      images: [featureDelicious1, featureDelicious2],
-    },
-    {
-      icon: DollarSign,
-      title: "Affordable",
-      description: "Premium quality at competitive prices. Great value for families and food lovers.",
-      images: [featureAffordable1, featureAffordable2],
-    },
-  ];
-
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            Why Choose Our Sausages?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            We take pride in delivering the best quality beef sausages with authentic flavors
-          </p>
+    <section id="features" className="py-20 bg-secondary/30">
+      {/* Section Slideshow Banner */}
+      <AnimatedSection animation="fadeIn" duration={1}>
+        <div className="relative h-64 md:h-80 w-full mb-16 overflow-hidden">
+          <ImageSlideshow
+            images={featuresSlideshowImages}
+            interval={5000}
+            className="w-full h-full"
+            overlayOpacity={0.35}
+          />
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <div className="text-center px-4">
+              <h2 
+                className="text-4xl md:text-6xl font-display font-bold text-white mb-4"
+                style={{
+                  textShadow: "0 0 30px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.6)",
+                }}
+              >
+                Why Choose Our Sausages?
+              </h2>
+              <p 
+                className="text-xl md:text-2xl text-white/90"
+                style={{
+                  textShadow: "0 2px 10px rgba(0,0,0,0.6)",
+                }}
+              >
+                Premium packages – Healthy, Delicious, Halal & Affordable
+              </p>
+            </div>
+          </div>
         </div>
+      </AnimatedSection>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+      <div className="container mx-auto px-4">
+        <AnimatedSection animation="fadeUp" className="text-center mb-12">
+          <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">Our Promise</p>
+          <h3 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+            Quality You Can Taste
+          </h3>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <FeatureCard
               key={feature.title}
@@ -123,7 +168,7 @@ export const Features = () => {
               title={feature.title}
               description={feature.description}
               images={feature.images}
-              delay={index * 0.1}
+              delay={index * 0.15}
             />
           ))}
         </div>
