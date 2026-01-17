@@ -6,7 +6,7 @@ import { ImageSlideshow } from "@/components/ImageSlideshow";
 import featureHealthy1 from "@/assets/feature-healthy-1.jpeg";
 import featureHealthy2 from "@/assets/feature-healthy-2.jpeg";
 import featureDelicious1 from "@/assets/feature-delicious-1.jpg";
-import featureDelicious2 from "@/assets/feature-delicious-2.jpg";
+import featureDelicious2 from "@/assets/feature-delicious-2.jpeg";
 import featureAffordable1 from "@/assets/feature-affordable-1.jpg";
 import featureAffordable2 from "@/assets/feature-affordable-2.jpg";
 import slideshow1 from "@/assets/slideshow-1.jpg";
