@@ -3,8 +3,8 @@ import { Heart, Utensils, DollarSign, LucideIcon } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { ImageSlideshow } from "@/components/ImageSlideshow";
 
-import featureHealthy1 from "@/assets/feature-healthy-1.jpg";
-import featureHealthy2 from "@/assets/feature-healthy-2.jpg";
+import featureHealthy1 from "@/assets/feature-healthy-1.jpeg";
+import featureHealthy2 from "@/assets/feature-healthy-2.jpeg";
 import featureDelicious1 from "@/assets/feature-delicious-1.jpg";
 import featureDelicious2 from "@/assets/feature-delicious-2.jpg";
 import featureAffordable1 from "@/assets/feature-affordable-1.jpg";
