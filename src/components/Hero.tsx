@@ -86,8 +86,8 @@ export const Hero = () => {
                 textShadow: "1px 1px 4px rgba(255,255,255,0.8)",
               }}
             >
-              Experience the authentic taste of premium beef sausages crafted with passion and tradition. 
-              100% healthy, delicious, Halal and affordable.
+              feel the authentic taste of Our beef sausages crafted with passion and tradition. 
+              healthy, delicious, Halal and affordable.
             </p>
           </AnimatedSection>
 
