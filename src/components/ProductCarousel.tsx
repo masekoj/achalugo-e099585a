@@ -14,24 +14,24 @@ const products = [
     id: "chakalaka-12",
     image: product1,
     name: "Fresh Chakalaka Sausages",
-    description: "Our signature fresh sausages, perfect for grilling or pan-frying. Bursting with authentic flavors. Pack of 12 premium beef sausages.",
-    price: 143.00,
+    description: "Our signature fresh sausages, perfect for grilling or pan-frying. Pack of <b>6</b>.",
+    price: 12.00,
     badge: "Best Seller",
   },
   {
     id: "grill-ready-12",
     image: product2,
     name: "Grill Ready Sausages",
-    description: "Pre-seasoned and ready to cook. Ideal for quick meals and gatherings. Pack of 12 premium beef sausages.",
-    price: 135.00,
+    description: "Pre-seasoned and ready to cook. Ideal for quick meals and gatherings. Pack of 10.",
+    price: 20.00,
     badge: "Popular",
   },
   {
     id: "bbq-special-12",
     image: product3,
     name: "BBQ Special Sausages",
-    description: "Premium quality sausages specially prepared for the perfect BBQ experience. Pack of 12 premium beef sausages.",
-    price: 149.00,
+    description: "Premium quality sausages specially prepared for the perfect BBQ experience. Pack of 6.",
+    price: 25.00,
     badge: "Premium",
   },
 ];
@@ -76,7 +76,7 @@ export const ProductCarousel = () => {
             Our Premium <span className="text-primary">Packages</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Every sausage is crafted with care, using only the finest ingredients
+            Crafted with care, using finest ingredients!
           </p>
         </AnimatedSection>
 
