@@ -19,7 +19,7 @@ export const Marquee = ({ compact = false }: MarqueeProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setDirection((prev) => (prev === "left" ? "right" : "left"));
-    }, 16000); // Faster direction swap
+    }, 12000); // Faster direction swap
     return () => clearInterval(interval);
   }, []);
 
@@ -46,7 +46,7 @@ export const Marquee = ({ compact = false }: MarqueeProps) => {
           x: direction === "left" ? ["0%", "-33.33%"] : ["-33.33%", "0%"],
         }}
         transition={{
-          duration: 16, // 50% faster (was 25s)
+          duration: 12, // Faster scroll
           ease: "linear",
           repeat: Infinity,
         }}

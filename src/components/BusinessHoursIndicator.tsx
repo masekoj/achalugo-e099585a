@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { Clock } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface BusinessHoursIndicatorProps {
   className?: string;
@@ -7,76 +6,49 @@ interface BusinessHoursIndicatorProps {
 
 export const BusinessHoursIndicator = ({ className = "" }: BusinessHoursIndicatorProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentStatus, setCurrentStatus] = useState("");
 
   useEffect(() => {
     const checkBusinessHours = () => {
       const now = new Date();
-      const day = now.getDay(); // 0 = Sunday
+      const day = now.getDay();
       const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const currentTime = hours * 60 + minutes;
-
-      // Business hours: Mon-Sat 9 AM - 7 PM (540 - 1140 minutes)
-      const openTime = 9 * 60; // 9:00 AM
-      const closeTime = 19 * 60; // 7:00 PM
-
+      
+      // Mon-Sat (1-6): 9 AM - 7 PM, Sun (0): Closed
       if (day === 0) {
-        // Sunday - closed
         setIsOpen(false);
-        setCurrentStatus("Closed · Opens Mon 9AM");
-      } else if (currentTime >= openTime && currentTime < closeTime) {
-        setIsOpen(true);
-        const closingHour = 7;
-        setCurrentStatus(`Open · Closes ${closingHour}PM`);
-      } else if (currentTime < openTime) {
-        setIsOpen(false);
-        setCurrentStatus(`Closed · Opens 9AM`);
       } else {
-        setIsOpen(false);
-        if (day === 6) {
-          setCurrentStatus("Closed · Opens Mon 9AM");
-        } else {
-          setCurrentStatus("Closed · Opens 9AM");
-        }
+        setIsOpen(hours >= 9 && hours < 19);
       }
     };
 
     checkBusinessHours();
-    const interval = setInterval(checkBusinessHours, 60000); // Check every minute
+    const interval = setInterval(checkBusinessHours, 60000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div 
-      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${className}`}
+      className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium tracking-wide uppercase ${className}`}
       style={{
-        background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-        border: "1px solid rgba(255,255,255,0.2)",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)",
+        background: isOpen 
+          ? "linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%)"
+          : "linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%)",
+        border: isOpen ? "1px solid rgba(34, 197, 94, 0.3)" : "1px solid rgba(239, 68, 68, 0.3)",
       }}
     >
-      <Clock className="h-3 w-3 text-muted-foreground" />
-      <div className="flex items-center gap-1.5">
-        {/* Pulsing dot */}
-        <span className="relative flex h-2 w-2">
-          <span
-            className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-              isOpen ? "bg-green-400" : "bg-red-400"
-            }`}
-          />
-          <span
-            className={`relative inline-flex rounded-full h-2 w-2 ${
-              isOpen ? "bg-green-500" : "bg-red-500"
-            }`}
-          />
-        </span>
-        <span className={isOpen ? "text-green-600" : "text-red-500"}>
-          {currentStatus}
-        </span>
+      <div className="relative flex items-center justify-center">
+        <div 
+          className={`w-1.5 h-1.5 rounded-full ${
+            isOpen ? "bg-green-500" : "bg-red-400"
+          }`}
+        />
+        {isOpen && (
+          <div className="absolute w-1.5 h-1.5 rounded-full bg-green-500 animate-ping opacity-60" />
+        )}
       </div>
+      <span className={isOpen ? "text-green-600" : "text-red-400"}>
+        {isOpen ? "Open" : "Closed"}
+      </span>
     </div>
   );
 };

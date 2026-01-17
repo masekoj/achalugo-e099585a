@@ -31,8 +31,8 @@ export const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div className="flex items-center gap-3">
-              <h1 className="text-2xl md:text-3xl font-display font-bold text-primary">
+            <div className="flex items-center gap-2">
+              <h1 className="text-xl md:text-2xl font-display font-bold text-primary">
                 Achalugo's
               </h1>
               {/* Business Hours - Desktop */}
@@ -77,8 +77,8 @@ export const Header = () => {
             </div>
 
             {/* Mobile: Business Hours + Cart + Menu */}
-            <div className="flex md:hidden items-center gap-2">
-              <BusinessHoursIndicator className="text-[10px]" />
+            <div className="flex md:hidden items-center gap-1.5">
+              <BusinessHoursIndicator />
               <CartIcon onClick={() => setIsCartOpen(true)} />
               <button
                 className="p-2 text-foreground hover:text-primary transition-colors"
