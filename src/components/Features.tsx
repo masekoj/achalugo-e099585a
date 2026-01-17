@@ -105,7 +105,7 @@ const features = [
   },
   {
     icon: Utensils,
-    title: "Delicious Food",
+    title: "Delicious",
     description: "Authentic Chakalaka flavor that brings families together.",
     images: [featureDelicious1, featureDelicious2],
   },
