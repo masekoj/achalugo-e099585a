@@ -14,7 +14,7 @@ const products = [
     id: "chakalaka-12",
     image: product1,
     name: "Fresh Chakalaka Sausages",
-    description: "Our signature fresh sausages, perfect for grilling or pan-frying. Pack of <b>6</b>.",
+    description: "Our signature fresh sausages, perfect for grilling or pan-frying. Pack of 6.",
     price: 12.00,
     badge: "Best Seller",
   },
@@ -73,7 +73,7 @@ export const ProductCarousel = () => {
       <div className="container mx-auto px-4">
         <AnimatedSection animation="fadeUp" className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            Our Premium <span className="text-primary">Packages</span>
+            Our <span className="text-primary">Packages</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Crafted with care, using finest ingredients!
