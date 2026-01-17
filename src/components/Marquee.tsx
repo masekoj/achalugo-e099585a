@@ -19,7 +19,7 @@ export const Marquee = ({ compact = false }: MarqueeProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setDirection((prev) => (prev === "left" ? "right" : "left"));
-    }, 25000);
+    }, 16000); // Faster direction swap
     return () => clearInterval(interval);
   }, []);
 
@@ -29,18 +29,24 @@ export const Marquee = ({ compact = false }: MarqueeProps) => {
     <div 
       className={`w-full overflow-hidden ${
         compact 
-          ? "bg-secondary/30 py-2" 
-          : "bg-secondary/50 py-3 border-y border-border/30"
+          ? "py-1.5" 
+          : "py-2"
       }`}
-      style={{ margin: compact ? "0" : "12px 0" }}
+      style={{ 
+        background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.1) 100%)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        borderTop: "1px solid rgba(255,255,255,0.1)",
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
+      }}
     >
       <motion.div
-        className="flex gap-12 whitespace-nowrap"
+        className="flex gap-8 whitespace-nowrap"
         animate={{
           x: direction === "left" ? ["0%", "-33.33%"] : ["-33.33%", "0%"],
         }}
         transition={{
-          duration: 25,
+          duration: 16, // 50% faster (was 25s)
           ease: "linear",
           repeat: Infinity,
         }}
@@ -49,12 +55,19 @@ export const Marquee = ({ compact = false }: MarqueeProps) => {
         {duplicatedTestimonials.map((text, index) => (
           <span
             key={index}
-            className={`font-sans px-4 ${compact ? "text-sm" : "text-base"}`}
+            className={`font-sans px-3 inline-flex items-center gap-2 ${compact ? "text-xs" : "text-sm"}`}
             style={{ 
-              color: "#666666",
+              color: "hsl(var(--muted-foreground))",
+              background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)",
+              backdropFilter: "blur(4px)",
+              WebkitBackdropFilter: "blur(4px)",
+              borderRadius: "20px",
+              padding: compact ? "4px 12px" : "6px 14px",
+              border: "1px solid rgba(255,255,255,0.2)",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)",
             }}
           >
-            ⭐ {text}
+            <span className="text-primary">⭐</span> {text}
           </span>
         ))}
       </motion.div>
