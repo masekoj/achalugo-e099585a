@@ -98,6 +98,11 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  /* Hide Lovable badge */
+  #lovable-badge {
+    display: none !important;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;

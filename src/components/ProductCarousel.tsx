@@ -170,32 +170,20 @@ export const ProductCarousel = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - Small & Subtle */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all duration-300 hover:scale-110"
-              style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255,255,255,0.3)",
-                boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-              }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full transition-all duration-300 hover:scale-110 hover:bg-black/50 flex items-center justify-center bg-black/30 backdrop-blur-sm hidden sm:flex"
               aria-label="Previous product"
             >
-              <ChevronLeft className="h-6 w-6 text-foreground" />
+              <ChevronLeft className="h-4 w-4 text-white" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all duration-300 hover:scale-110"
-              style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255,255,255,0.3)",
-                boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full transition-all duration-300 hover:scale-110 hover:bg-black/50 flex items-center justify-center bg-black/30 backdrop-blur-sm hidden sm:flex"
               aria-label="Next product"
             >
-              <ChevronRight className="h-6 w-6 text-foreground" />
+              <ChevronRight className="h-4 w-4 text-white" />
             </button>
 
             {/* Play/Pause indicator */}
