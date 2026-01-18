@@ -72,7 +72,7 @@ export const Hero = () => {
                   textShadow: "2px 2px 8px rgba(255,255,255,0.9), 0 0 40px hsl(var(--primary) / 0.3)",
                 }}
               >
-                Chakalaka
+                Chakalaka and BBQ
               </span> <br />
               Beef Sausages
             </h1>
