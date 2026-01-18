@@ -93,24 +93,24 @@ export const Hero = () => {
 
           {/* CTA Buttons with glassmorphism */}
           <AnimatedSection animation="fadeUp" delay={0.3} duration={0.8}>
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8 items-start sm:items-center">
               <a href="tel:+14256831611">
                 <Button 
                   size="lg" 
-                  className="w-full sm:w-auto transition-all duration-300 hover:scale-105"
+                  className="px-8 rounded-xl transition-all duration-300 hover:scale-105"
                   style={{
                     background: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.85) 100%)",
                     boxShadow: "0 8px 30px hsl(var(--primary) / 0.4), inset 0 1px 0 rgba(255,255,255,0.25)",
                   }}
                 >
-                  <Phone className="mr-2 h-5 w-5" />
-                  Order Now: +1 (425) 683-1611
+                  <Phone className="mr-2 h-4 w-4" />
+                  Order Now
                 </Button>
               </a>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-full sm:w-auto hover:scale-105"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 px-8 rounded-xl"
                 onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
                 style={{
                   backdropFilter: "blur(8px)",
