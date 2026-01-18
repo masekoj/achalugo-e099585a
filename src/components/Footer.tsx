@@ -104,7 +104,7 @@ export const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="https://tiktok.com" 
+                href="https://vt.tiktok.com/ZSad6MN6H/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-gradient-to-br from-[#00f2ea] via-[#ff0050] to-[#000] hover:opacity-80 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"

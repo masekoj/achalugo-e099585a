@@ -186,14 +186,18 @@ export const ProductCarousel = () => {
               <ChevronRight className="h-4 w-4 text-white" />
             </button>
 
-            {/* Play/Pause indicator */}
-            <div className="absolute top-4 right-4">
+            {/* Play/Pause Button - Functional */}
+            <button
+              onClick={() => setIsPaused(!isPaused)}
+              className="absolute top-4 right-4 h-8 w-8 rounded-full bg-black/20 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-black/40 hover:scale-110"
+              aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+            >
               {isPaused ? (
-                <Pause className="h-4 w-4 text-muted-foreground animate-pulse" />
+                <Play className="h-4 w-4 text-white" />
               ) : (
-                <Play className="h-4 w-4 text-muted-foreground" />
+                <Pause className="h-4 w-4 text-white" />
               )}
-            </div>
+            </button>
           </div>
 
           {/* Dots Navigation */}
