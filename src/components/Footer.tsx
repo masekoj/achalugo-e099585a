@@ -128,7 +128,7 @@ export const Footer = () => {
                 <span className="text-primary">✦</span>
               </div>
               <p className="text-sm text-white/50">
-                &copy; {new Date().getFullYear()} Achalugo's Chakalaka Beef Sausages. All rights reserved.
+                &copy; {new Date().getFullYear()} Achalugo's Chakalaka and BBQ Beef Sausages. All rights reserved.
               </p>
               <div className="flex gap-6 text-sm text-white/50">
                 <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
