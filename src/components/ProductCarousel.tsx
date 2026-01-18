@@ -15,7 +15,7 @@ const products = [
     image: product1,
     name: "Fresh Chakalaka Sausages",
     description: "Our signature fresh sausages, perfect for grilling or pan-frying. Pack of 6.",
-    price: 12.00,
+    price: 25.00,
     badge: "Best Seller",
   },
   {
@@ -23,7 +23,7 @@ const products = [
     image: product2,
     name: "Grill Ready Sausages",
     description: "Pre-seasoned and ready to cook. Ideal for quick meals and gatherings. Pack of 10.",
-    price: 20.00,
+    price: 25.00,
     badge: "Popular",
   },
   {
