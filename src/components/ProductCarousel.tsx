@@ -22,7 +22,7 @@ const products = [
     id: "grill-ready-12",
     image: product2,
     name: "Grill Ready Sausages",
-    description: "Pre-seasoned and ready to cook. Ideal for quick meals and gatherings. Pack of 10.",
+    description: "Pre-seasoned and ready to cook. Ideal for quick meals and gatherings. Pack of 6.",
     price: 25.00,
     badge: "Popular",
   },
