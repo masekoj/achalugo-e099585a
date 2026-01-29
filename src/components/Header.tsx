@@ -1,21 +1,58 @@
-import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Phone, Images, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Marquee } from "@/components/Marquee";
 import { BusinessHoursIndicator } from "@/components/BusinessHoursIndicator";
 import { CartIcon } from "@/components/CartIcon";
 import { CartDrawer } from "@/components/CartDrawer";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Auto-close menu on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener("touchmove", handleScroll, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
+    };
+  }, [isMenuOpen]);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
+    setIsMenuOpen(false);
+  };
+
+  const navigateToPage = (path: string) => {
+    navigate(path);
+    setIsMenuOpen(false);
   };
 
   return (
@@ -32,9 +69,9 @@ export const Header = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <h1 className="text-xl md:text-2xl font-display font-bold text-primary">
+              <button onClick={() => navigateToPage("/")} className="text-xl md:text-2xl font-display font-bold text-primary hover:opacity-80 transition-opacity">
                 Achalugo's
-              </h1>
+              </button>
               {/* Business Hours - Desktop */}
               <div className="hidden lg:block">
                 <BusinessHoursIndicator />
@@ -47,7 +84,7 @@ export const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6">
+            <nav className="hidden md:flex items-center gap-4">
               {["home", "about", "products", "contact"].map((section) => (
                 <button
                   key={section}
@@ -57,6 +94,20 @@ export const Header = () => {
                   {section}
                 </button>
               ))}
+              <button
+                onClick={() => scrollToSection("faq")}
+                className="text-foreground hover:text-primary transition-colors font-medium text-sm px-3 py-1.5 rounded-full hover:bg-primary/5 flex items-center gap-1"
+              >
+                <HelpCircle className="w-4 h-4" />
+                FAQs
+              </button>
+              <button
+                onClick={() => navigateToPage("/gallery")}
+                className="text-foreground hover:text-primary transition-colors font-medium text-sm px-3 py-1.5 rounded-full hover:bg-primary/5 flex items-center gap-1"
+              >
+                <Images className="w-4 h-4" />
+                Gallery
+              </button>
             </nav>
 
             {/* CTA Buttons & Cart */}
@@ -103,6 +154,20 @@ export const Header = () => {
                     {section}
                   </button>
                 ))}
+                <button
+                  onClick={() => scrollToSection("faq")}
+                  className="text-foreground hover:text-primary transition-colors font-medium text-left py-2 px-3 rounded-lg hover:bg-primary/5 flex items-center gap-2"
+                >
+                  <HelpCircle className="w-4 h-4" />
+                  FAQs
+                </button>
+                <button
+                  onClick={() => navigateToPage("/gallery")}
+                  className="text-foreground hover:text-primary transition-colors font-medium text-left py-2 px-3 rounded-lg hover:bg-primary/5 flex items-center gap-2"
+                >
+                  <Images className="w-4 h-4" />
+                  Gallery
+                </button>
                 <a href="tel:+14256831611" className="pt-2">
                   <Button 
                     className="w-full"
