@@ -103,21 +103,21 @@ export const Header = () => {
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className="text-foreground hover:text-primary transition-colors font-medium capitalize text-sm px-3 py-1.5 rounded-full hover:bg-primary/5"
+                  className="nav-underline text-foreground hover:text-primary transition-colors font-medium capitalize text-sm px-3 py-1.5"
                 >
                   {section}
                 </button>
               ))}
               <button
                 onClick={() => scrollToSection("faq")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-sm px-3 py-1.5 rounded-full hover:bg-primary/5 flex items-center gap-1"
+                className="nav-underline text-foreground hover:text-primary transition-colors font-medium text-sm px-3 py-1.5 flex items-center gap-1"
               >
                 <HelpCircle className="w-4 h-4" />
                 FAQs
               </button>
               <button
                 onClick={() => navigateToPage("/gallery")}
-                className="text-foreground hover:text-primary transition-colors font-medium text-sm px-3 py-1.5 rounded-full hover:bg-primary/5 flex items-center gap-1"
+                className="nav-underline text-foreground hover:text-primary transition-colors font-medium text-sm px-3 py-1.5 flex items-center gap-1"
               >
                 <Images className="w-4 h-4" />
                 Gallery
@@ -198,10 +198,21 @@ export const Header = () => {
             </nav>
           )}
         </div>
-        
+
         {/* Marquee - Mobile Full Width */}
         <div className="md:hidden w-full border-t border-border/20">
           <Marquee compact />
+        </div>
+
+        {/* Page-load line draw */}
+        <div className="absolute bottom-0 left-0 right-0 h-px overflow-hidden pointer-events-none">
+          <div
+            className="h-full w-full animate-line-draw"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent 0%, hsl(var(--primary)) 50%, transparent 100%)",
+            }}
+          />
         </div>
       </header>
 
