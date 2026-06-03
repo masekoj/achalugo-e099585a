@@ -21,22 +21,22 @@ const heroSlideImages = [
 export const Hero = () => {
   return (
     <section id="home" className="pt-24 min-h-screen flex flex-col relative overflow-hidden">
-      {/* Background Slideshow - High visibility */}
-      <div className="absolute inset-0 z-0">
+      {/* Background Slideshow with drift-in */}
+      <div className="absolute inset-0 z-0 animate-hero-drift">
         <ImageSlideshow
           images={heroSlideImages}
           interval={6000}
           className="w-full h-full"
           overlayOpacity={0.15}
         />
-        {/* Smart gradient overlay for text readability - lighter at top */}
-        <div 
-          className="absolute inset-0"
+        {/* Soft overlay fade */}
+        <div
+          className="absolute inset-0 animate-fade-in"
           style={{
-            background: "linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.6) 40%, rgba(0,0,0,0.1) 100%)",
+            background:
+              "linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.6) 40%, rgba(0,0,0,0.1) 100%)",
           }}
         />
-        {/* Bottom fade for section transition */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </div>
 
@@ -58,23 +58,38 @@ export const Hero = () => {
           </AnimatedSection>
           
           <AnimatedSection animation="fadeUp" delay={0.1} duration={0.8}>
-            <h1 
+            <h1
               className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight"
               style={{
                 color: "hsl(var(--foreground))",
-                textShadow: "2px 2px 8px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.5)",
+                textShadow:
+                  "2px 2px 8px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.5)",
               }}
             >
-              Achalugo's <br />
-              <span 
-                className="text-primary"
-                style={{
-                  textShadow: "2px 2px 8px rgba(255,255,255,0.9), 0 0 40px hsl(var(--primary) / 0.3)",
-                }}
-              >
-                Chakalaka and BBQ
-              </span> <br />
-              Beef Sausages
+              <span className="kinetic-mask leading-[1.05]">
+                <span className="kinetic-rise" style={{ animationDelay: "0.05s" }}>
+                  Achalugo's
+                </span>
+              </span>
+              <br />
+              <span className="kinetic-mask leading-[1.05]">
+                <span
+                  className="kinetic-rise text-primary"
+                  style={{
+                    animationDelay: "0.2s",
+                    textShadow:
+                      "2px 2px 8px rgba(255,255,255,0.9), 0 0 40px hsl(var(--primary) / 0.3)",
+                  }}
+                >
+                  Chakalaka and BBQ
+                </span>
+              </span>
+              <br />
+              <span className="kinetic-mask leading-[1.05]">
+                <span className="kinetic-rise" style={{ animationDelay: "0.35s" }}>
+                  Beef Sausages
+                </span>
+              </span>
             </h1>
           </AnimatedSection>
           
@@ -95,27 +110,44 @@ export const Hero = () => {
           <AnimatedSection animation="fadeUp" delay={0.3} duration={0.8}>
             <div className="flex flex-col sm:flex-row gap-4 mb-8 items-start sm:items-center">
               <a href="tel:+14256831611">
-                <Button 
-                  size="lg" 
-                  className="px-8 rounded-xl transition-all duration-300 hover:scale-105"
+                <Button
+                  size="lg"
+                  className="cta-radial px-8 rounded-xl transition-all duration-500 hover:scale-[1.03]"
+                  onMouseMove={(e) => {
+                    const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                    (e.currentTarget as HTMLElement).style.setProperty("--mx", `${e.clientX - r.left}px`);
+                    (e.currentTarget as HTMLElement).style.setProperty("--my", `${e.clientY - r.top}px`);
+                  }}
                   style={{
-                    background: "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.85) 100%)",
-                    boxShadow: "0 8px 30px hsl(var(--primary) / 0.4), inset 0 1px 0 rgba(255,255,255,0.25)",
+                    background:
+                      "linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.85) 100%)",
+                    boxShadow:
+                      "0 8px 30px hsl(var(--primary) / 0.4), inset 0 1px 0 rgba(255,255,255,0.25)",
+                    transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                 >
                   <Phone className="mr-2 h-4 w-4" />
                   Order Now
                 </Button>
               </a>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 px-8 rounded-xl"
-                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+                className="cta-radial border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 hover:scale-[1.03] px-8 rounded-xl"
+                onClick={() =>
+                  document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })
+                }
+                onMouseMove={(e) => {
+                  const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                  (e.currentTarget as HTMLElement).style.setProperty("--mx", `${e.clientX - r.left}px`);
+                  (e.currentTarget as HTMLElement).style.setProperty("--my", `${e.clientY - r.top}px`);
+                }}
                 style={{
                   backdropFilter: "blur(8px)",
                   background: "rgba(255,255,255,0.7)",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5)",
+                  boxShadow:
+                    "0 4px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5)",
+                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               >
                 View Products
