@@ -157,13 +157,90 @@ All colors MUST be HSL.
   }
 
   @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Premium easing */
+  .ease-premium { transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+
+  /* Header bottom line draw on page load */
+  @keyframes line-draw {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  .animate-line-draw {
+    transform-origin: left center;
+    animation: line-draw 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Nav link center-out underline */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    height: 1px;
+    width: 0;
+    background-color: hsl(var(--primary));
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-underline:hover::after {
+    width: calc(100% - 1.5rem);
+    left: 0.75rem;
+  }
+
+  /* Kinetic text reveal */
+  .kinetic-mask { overflow: hidden; display: inline-block; }
+  @keyframes kinetic-rise {
+    from { transform: translateY(110%); }
+    to { transform: translateY(0%); }
+  }
+  .kinetic-rise {
+    display: inline-block;
+    animation: kinetic-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Hero image drift */
+  @keyframes hero-drift {
+    from { transform: scale(1.08); }
+    to { transform: scale(1); }
+  }
+  .animate-hero-drift {
+    animation: hero-drift 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* CTA radial hover */
+  .cta-radial { position: relative; overflow: hidden; isolation: isolate; }
+  .cta-radial::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.35), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .cta-radial:hover::before { opacity: 1; }
+  .cta-radial > * { position: relative; z-index: 1; }
+
+  /* Marquee infinite linear */
+  @keyframes marquee-x {
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(-50%,0,0); }
+  }
+  .animate-marquee {
+    animation: marquee-x var(--marquee-duration, 18s) linear infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-line-draw, .kinetic-rise, .animate-hero-drift, .animate-marquee {
+      animation: none !important;
     }
   }
 }
