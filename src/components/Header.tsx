@@ -10,22 +10,27 @@ import { useNavigate, useLocation } from "react-router-dom";
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Scroll-driven morph
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Auto-close menu on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (isMenuOpen) {
-        setIsMenuOpen(false);
-      }
+      if (isMenuOpen) setIsMenuOpen(false);
     };
-
     if (isMenuOpen) {
       window.addEventListener("scroll", handleScroll, { passive: true });
       window.addEventListener("touchmove", handleScroll, { passive: true });
     }
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("touchmove", handleScroll);
@@ -57,16 +62,25 @@ export const Header = () => {
 
   return (
     <>
-      <header 
-        className="fixed top-0 left-0 right-0 z-50 border-b border-border/30"
+      <header
+        className="fixed top-0 left-0 right-0 z-50 border-b border-border/30 transition-all duration-500"
         style={{
-          background: "linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
+          background: scrolled
+            ? "linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.7) 100%)"
+            : "linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)",
+          backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(12px)",
+          WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(12px)",
+          transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div
+            className="flex items-center justify-between transition-[height] duration-500"
+            style={{
+              height: scrolled ? "3.25rem" : "4rem",
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+          >
             {/* Logo */}
             <div className="flex items-center gap-2">
               <button onClick={() => navigateToPage("/")} className="text-xl md:text-2xl font-display font-bold text-primary hover:opacity-80 transition-opacity">
